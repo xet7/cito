@@ -7,7 +7,7 @@ Fusion Programming Language
 
 Fusion is a programming language designed for implementing reusable components
 (libraries) for C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript
-and OpenCL C, all from single codebase.
+and OpenCL C, all from a single codebase.
 
 A "Hello, world" library:
 
@@ -26,8 +26,8 @@ can be translated to all the listed languages with:
 fut -o hello.c,cpp,cs,d,java,js,py,swift,ts,cl hello.fu
 ```
 
-The translated code is lightweight (no virtual machine, emulation nor
-dependencies), human-readable and fits well with the target language,
+The translated code is lightweight (no virtual machine, emulation, or
+dependencies) and human-readable, and it fits well with the target language,
 including naming conventions and documentation comments.
 
 Check out [Fusion Playground](https://fusion-lang.org/playground) in your browser.

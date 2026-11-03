@@ -46,7 +46,7 @@ Source file contents must be UTF-8 encoded with an optional BOM.
 Most of the time, whitespace is insignificant in Fusion source code.
 Let's continue indentation style flame wars!
 
-There are single-line comments from `//` till the end of line
+There are single-line comments from `//` till the end of the line
 and `/* multiline comments */`.
 Documentation comments are described below.
 
@@ -78,7 +78,7 @@ For larger numbers, use the 64-bit `long`.
 
 `int` and `long` are often sufficient for scalar variables. For arrays,
 you want to conserve storage space and use smaller types where possible.
-Not only reduces it memory footprint, but it's also cache-friendly,
+Not only does it reduce the memory footprint, but it's also cache-friendly,
 which is essential for good performance.
 It is the programmer's responsibility to assign
 only the values that are in the given range.
@@ -90,7 +90,7 @@ Note that a `uint` is _not_ a 32-bit unsigned integer, but a 31-bit one.
 As such, it doesn't provide extended range over an `int`.
 It serves as documentation that a negative number is not allowed.
 `byte` corresponds to `byte` in Java, even though the Java type is _signed_.
-To accomplish this, `fut` injects `& 0xff` in every retrieval
+To accomplish this, `fut` injects `& 0xff` into every retrieval
 of a `byte` value.
 
 Integer literals may be written as:
@@ -100,7 +100,7 @@ Integer literals may be written as:
 * binary (`0b101`)
 * octal (`0o777`)
 
-Character literals (such as `'c'`) represent the Unicode codepoint of the
+Character literals (such as `'c'`) represent the Unicode code point of the
 character as an `int` (not `char` because there's no such type in Fusion).
 You may also use the following escape sequences:
 
@@ -113,13 +113,13 @@ You may also use the following escape sequences:
 
 Operations on integers are conducted with the usual binary operators
 `+ - * / % & | ^ << >>`, compound assignments (such as `*=`),
-incrementations and decrementations (`x++ ++x x-- --x`), negation (`-`),
+increments and decrements (`x++ ++x x-- --x`), negation (`-`),
 bitwise complement (`~`) and comparisons (`== != < <= > >=`).
 
-Incrementations and decrementations cannot be _conditional_ in an expression.
+Increments and decrements cannot be _conditional_ in an expression.
 That is, they cannot be used on the right side of `&&`, `||`
 or the ternary operator. This is because such expressions wouldn't easily
-translate to Python or Swift, where incrementations and decrementations
+translate to Python or Swift, where increments and decrements
 are implemented as `+=` and `-=` statements.
 
 `MinValue` and `MaxValue` constants are defined for all integer types,
@@ -332,7 +332,7 @@ Possible string operations include the following:
 * `str.Replace(old, new)` returns the contents of `str` with all occurrences
   of `old` substituted with `new`.
 * `str.ToLower()` and `str.ToUpper()` return a copy of the string
-  with characters changed to respectively lowercase and uppercase
+  with characters changed to lowercase and uppercase, respectively.
 * `Convert.ToBase64String(byteArray, offset, length)` encodes the specified
   array part as a Base64 string.
 * `Encoding.UTF8.GetByteCount(str)` calculates the number of bytes needed
@@ -357,8 +357,8 @@ To convert a number from its text representation, use `x.TryParse(str)`
 where `x` is a variable of type `int`, `nint`, `long`, `float` or `double`.
 If `str` can be converted to this type, the variable `x` is assigned the value
 and the method returns `true`. Otherwise, `x` is zeroed and the method returns
-`false`. This method call should be used as a condition to the `if` statement.
-For integer types, an `radix` argument can be added, e.g.
+`false`. This method call should be used as the condition of an `if` statement.
+For integer types, a `radix` argument can be added, e.g.
 `i.TryParse(hexNumStr, 16)`.
 
 #### Interpolated strings
@@ -417,7 +417,7 @@ bool isInteger = Regex.IsMatch(s, "^\\d+$");
 * `RegexOptions.IgnoreCase` matches both uppercase and lowercase letters.
 * `RegexOptions.Multiline` changes the behavior of `^` and `$` to match at
   the beginning and the end of a line instead of just the beginning and the end
-  of the string. Lines are separated by the newline (`'\n'`) characters.
+  of the string. Lines are separated by newline (`'\n'`) characters.
 * `RegexOptions.Singleline` changes the behavior of the dot (`.`)
   so that it matches every character.
   Normally it doesn't match the newline (`'\n'`).
@@ -638,7 +638,7 @@ class Car
 ```
 
 Languages such as Java and C# initialize every field, even if you don't provide
-the initial value. In Fusion fields are uninitialized unless initialized explicitly:
+the initial value. In Fusion, fields are uninitialized unless initialized explicitly:
 
 ```csharp
 class Point
@@ -871,7 +871,7 @@ if (baseDynamicReference is Derived# derivedDynamicRef) {
 }
 ```
 
-The `is` operator can be used in any boolean expressions, but the introduced
+The `is` operator can be used in any boolean expression, but the introduced
 derived reference variable can only be used when the `is` operator returns
 `true`. That is, the following code is invalid:
 
@@ -927,7 +927,7 @@ In addition to arrays, Fusion has eight built-in collection types:
 
 #### List
 
-A list must specify element type. This can be any Fusion type.
+A list must specify an element type. This can be any Fusion type.
 
 ```csharp
 List<int>() listOfInts;
@@ -1043,7 +1043,7 @@ in the value order.
 
 `Dictionary` provides fast access to a given _value_ associated
 with a _key_. The key must be a number, a string or an enumeration.
-Value can be of any type.
+The value can be of any type.
 
 ```csharp
 Dictionary<string(), int>() dict;
@@ -1105,7 +1105,7 @@ int x = 5;
 int[4] array = 0; // initialized with zeros
 ```
 
-Variable without an initial value is considered uninitialized and must be
+A variable without an initial value is considered uninitialized and must be
 assigned before it is read. This also applies to string storage.
 For array storage, the array is created,
 but its elements are not default-initialized.
@@ -1247,7 +1247,7 @@ case 2:
 }
 ```
 
-Correct termination means a statement that doesn't fall
+Correct termination means a statement that doesn't fall through
 to the next statement: `break`, `continue`, `return` or `throw`.
 
 The `default` clause, if present, must be specified last.
@@ -1358,7 +1358,7 @@ the standard error stream.
 kept in a buffer on some systems.
 
 `Console.ReadLine()` reads a line of text from standard input and returns
-as a `string()` without the trailing newline character.
+a `string()` without the trailing newline character.
 This method is experimental and subject to change.
 
 ### Environment variables
@@ -1384,7 +1384,7 @@ of milliseconds passed since 1970-01-01 00:00:00 UTC, as a `long`.
 
 Fusion is a language designed specifically for implementing libraries.
 It was _never_ meant for building whole programs.
-However, occassionally you might want to experiment with console applications.
+However, occasionally you might want to experiment with console applications.
 For that, you need an entry point in the form of a `Main` method in any of your
 public classes. This method should have one of the four possible signatures:
 
@@ -1408,14 +1408,14 @@ zero for a successful execution and non-zero for an error.
 
 Currently there is very limited support for multi-threading. It consists
 of the `lock` statement (translated to `synchronized` in Java).
-Unlike in C# and Java, not every object can be used for mutual exclusion.
+Unlike C# and Java, not every object can be used for mutual exclusion.
 Instead, locks must be explicitly defined as storage of class `Lock`.
 
 ```csharp
 Lock() mutex; // typically a class field
 ...
 lock (mutex) {
-    // code executed by only one thread per this instance of mutex at a time
+    // code executed by only one thread at a time for this instance of the mutex
     ...
 }
 ```
@@ -1442,7 +1442,7 @@ Native blocks are allowed:
 * inside `class` (to add class members or decorations to emitted class members)
 * at the top level (for `import` / `using` declarations).
 
-The contents of the native block is copied verbatim to the output,
+The contents of the native block are copied verbatim to the output,
 including all whitespace.
 For Python, you should make sure the indentation in the native block matches
 the surrounding code emitted by `fut`, which indents with tabs.
@@ -1500,7 +1500,7 @@ public string GetOriginalModuleExt(
 ```
 
 Documentation comments should be full sentences. The first sentence,
-terminated with a period at the end of line, becomes the summary.
+terminated with a period at the end of the line, becomes the summary.
 Subsequent sentences (if any) give more details.
 
 There are limited formatting options: fixed-width font, paragraphs and bullets.
@@ -1542,8 +1542,8 @@ public void SetDate(string value)
 
 It is advised to use the following naming conventions in Fusion code:
 
-* Local variables, parameters and local constants start with a lowercase letter,
-  capitalize the first letter of the following words - that is, `camelCase`.
+* Local variables, parameters and local constants start with a lowercase letter
+  and capitalize the first letter of each following word - that is, `camelCase`.
 * All other identifiers should start with an uppercase letter - that is,
   `PascalCase`.
 

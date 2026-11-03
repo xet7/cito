@@ -1,7 +1,7 @@
 # How to compile and test fut
 
 `fut` is implemented in Fusion.
-To solve the egg-and-chicken problem, its transpilations to C++, C#
+To solve the chicken-and-egg problem, its transpilations to C++, C#
 and JavaScript are included with the source code.
 
 ## Building a C++ fut

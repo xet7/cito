@@ -152,7 +152,7 @@ public class HelloFu
 }
 ```
 
-Note the different placement of the return type and the lack of semicolon.
+Note the different placement of the return type and the lack of a semicolon.
 
 The JavaScript output `hello.js` does not specify the return type:
 

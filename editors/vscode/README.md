@@ -11,4 +11,4 @@ A Visual Studio Code extension for the [Fusion programming language](https://fus
 
 Fusion lets you implement reusable components (libraries) for
 C, C++, C#, D, Java, JavaScript, Python, Swift, TypeScript and OpenCL C,
-all from single codebase.
+all from a single codebase.
